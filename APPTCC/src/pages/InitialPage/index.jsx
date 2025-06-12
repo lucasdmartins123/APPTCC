@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import nomeJogo from "../../assets/nomeJogo.png";
 
 export default function InitialPage() {
   return (
     <>
       <Container>
-        <StyledTop>
-          <StyledH1>Engenharia de Requisitos </StyledH1>
-          <StyledH1>The Game</StyledH1>
-        </StyledTop>
+        <StyledImg src={nomeJogo} />
         <Link to="/pageQuestion">
           <WrapperContainer>
             <FocusTitleDiv>
-              <StyledH3>Parque de Diversão</StyledH3>
+              <StyledH3>Parque de Diversões</StyledH3>
             </FocusTitleDiv>
           </WrapperContainer>
         </Link>
@@ -33,25 +31,12 @@ const Container = styled.div`
   }
 `;
 
-const StyledTop = styled.div`
-  width: 500px;
-  margin-top: 100px;
-  text-align: center;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  border: 3px solid gray;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  @media (max-width: 520px) {
+const StyledImg = styled.img`
+  width: 100%;
+  max-width: 600px;
+  @media (max-width: 800px) {
     width: 100%;
   }
-`;
-
-const StyledH1 = styled.h1`
-  font-size: 30px;
-  color: black;
 `;
 
 const StyledH3 = styled.h3`
@@ -72,12 +57,12 @@ const WrapperContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 500px;
+  width: 600px;
   height: 200px;
   border-radius: 10px;
-  border: 3px solid yellow;
+  border: 3px solid #2c4f6f;
   background: url("/img/parque_diversao.webp");
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     width: 400px;
   }
 `;

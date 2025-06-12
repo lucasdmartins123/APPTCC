@@ -7,7 +7,7 @@ const perguntasDict = [
     respostasCorretasNaoFuncionais: ["39", "21"],
     respostasCorretasFuncionaisExplicacao: [
       "A engenheira chefe sempre fala a verdade e dessa forma ela viu uma necessidade do parque que é ter áreas separadas.",
-      "Como mencionado pela engenheira chefe na outra carta, essa carta evindência a necessidade de uma área infantil separada.",
+      "Como mencionado pela engenheira chefe na outra carta, essa carta evidência a necessidade de uma área infantil separada.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
       "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade através de rampas para cadeirantes ",

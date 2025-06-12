@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import perguntasDict from "../../utils";
-
+import nomeJogo from "../../assets/nomeJogo.png";
 export default function ExplicacoesGabarito() {
   function limparRespostas() {
     localStorage.removeItem("respostasFuncionais");
@@ -11,10 +11,7 @@ export default function ExplicacoesGabarito() {
   return (
     <>
       <Container>
-        <StyledTop>
-          <StyledH1>Engenharia de Requisitos </StyledH1>
-          <StyledH1>The Game</StyledH1>
-        </StyledTop>
+        <StyledImg src={nomeJogo} />
 
         <WrapperContainer>
           <StyledH2>Explicações do Gabarito</StyledH2>
@@ -46,7 +43,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   margin: 6px;
   a {
     text-decoration: none;
@@ -59,25 +55,13 @@ const ButtonsDiv = styled.div`
   align-items: center;
 `;
 
-const StyledTop = styled.div`
-  width: 500px;
-  margin-top: 30px;
-  text-align: center;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  border: 3px solid gray;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  @media (max-width: 500px) {
+const StyledImg = styled.img`
+  margin-top: 16px;
+  width: 100%;
+  max-width: 500px;
+  @media (max-width: 800px) {
     width: 100%;
   }
-`;
-
-const StyledH1 = styled.h1`
-  font-size: 30px;
-  color: black;
 `;
 
 const StyledFinalP = styled.p`
@@ -94,12 +78,6 @@ const StyledQuestionsDiv = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-const StyledFinalAnswersDiv = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 const StyledRequisitosDiv = styled.div`
   display: flex;
@@ -108,7 +86,7 @@ const StyledRequisitosDiv = styled.div`
 `;
 
 const WrapperContainer = styled.div`
-  margin: 20px;
+  margin: 10px;
   padding: 20px;
   gap: 15px;
   display: flex;

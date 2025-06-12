@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import perguntasDict, { resultadoFinal } from "../../utils";
+import nomeJogo from "../../assets/nomeJogo.png";
 
 export default function PageQuestion() {
   const [gabarito, setGabarito] = useState(false);
@@ -115,6 +116,12 @@ export default function PageQuestion() {
     }
   }, []);
 
+  const todosInputsPreenchidos = perguntasDict.every((_, index) => {
+    const funcional = respostasFuncionais[index];
+    const naoFuncional = respostasNaoFuncionais[index];
+    return funcional?.trim() && naoFuncional?.trim();
+  });
+
   function limparRespostas() {
     localStorage.removeItem("respostasFuncionais");
     localStorage.removeItem("respostasNaoFuncionais");
@@ -125,11 +132,7 @@ export default function PageQuestion() {
   return (
     <>
       <Container>
-        <StyledTop>
-          <StyledH1>Engenharia de Requisitos </StyledH1>
-          <StyledH1>The Game</StyledH1>
-        </StyledTop>
-
+        <StyledImg src={nomeJogo} />
         <WrapperContainer>
           {!mostrarTextoFinal ? (
             <>
@@ -190,7 +193,12 @@ export default function PageQuestion() {
           )}
           <ButtonsDiv>
             {!mostrarTextoFinal && !gabarito && (
-              <StyledButton onClick={pontuacao}>Responder</StyledButton>
+              <StyledButton
+                onClick={pontuacao}
+                disabled={!todosInputsPreenchidos}
+              >
+                Responder
+              </StyledButton>
             )}
             {mostrarTextoFinal && (
               <StyledButton
@@ -218,42 +226,32 @@ export default function PageQuestion() {
     </>
   );
 }
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+
   margin: 6px;
   a {
     text-decoration: none;
   }
 `;
+
+const StyledImg = styled.img`
+  margin-top: 16px;
+  width: 100%;
+  max-width: 500px;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+`;
+
 const ButtonsDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 6px;
   align-items: center;
-`;
-
-const StyledTop = styled.div`
-  width: 500px;
-  margin-top: 30px;
-  text-align: center;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  border: 3px solid gray;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  @media (max-width: 500px) {
-    width: 100%;
-  }
-`;
-
-const StyledH1 = styled.h1`
-  font-size: 30px;
-  color: black;
 `;
 
 const StyledP = styled.p`
@@ -286,7 +284,7 @@ const StyledRequisitosDiv = styled.div`
 `;
 
 const WrapperContainer = styled.div`
-  margin: 20px;
+  margin: 10px;
   padding: 20px;
   gap: 15px;
   display: flex;
@@ -312,6 +310,10 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #8892ff;
     color: #f5f5f5;
+  }
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 `;
 
