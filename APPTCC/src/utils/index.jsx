@@ -6,12 +6,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["27", "38"],
     respostasCorretasNaoFuncionais: ["39", "21"],
     respostasCorretasFuncionaisExplicacao: [
-      "A engenheira chefe sempre fala a verdade e dessa forma ela viu uma necessidade do parque que é ter áreas separadas.",
+      "A engenheira chefe sempre fala a verdade, dessa forma ela identificou que uma das necessidades do parque é ter áreas separadas.",
       "Como mencionado pela engenheira chefe na outra carta, essa carta evidência a necessidade de uma área infantil separada.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade através de rampas para cadeirantes ",
-      "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade através de funcionários que podem ajudar visitantes que são deficientes auditivos",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da acessibilidade através de rampas para deficientes físicos e idosos.",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da acessibilidade através de funcionários que podem ajudar visitantes que são deficientes auditivos.",
     ],
   },
   {
@@ -21,12 +21,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["20", "11"],
     respostasCorretasNaoFuncionais: ["34", "18"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta é um requisito funcional que descreve uma funcionalidade específica que o parque deve oferecer para atender às necessidades dos visitantes",
-      "Através dessa carta é possível identificar a necessidade do parque de ter shows avisados com antecedência",
+      " Essa carta é um requisito funcional que descreve uma funcionalidade específica que o parque deveria oferecer para atender às necessidades dos visitantes.",
+      "Através dessa carta é possível identificar a necessidade do parque de ter shows avisados com antecedência, pois as cartas de análise de documentos são sempre verdadeiras.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade e usabilidade facilitando daltonicos a ter uma maior facilidade ao utilizar o aplicativo",
-      "Essa carta é verdadeira pois fala do requisito não funcional da segurança entendendo a importância dos visitantes se sentirem seguros nos shows",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da segurança entendendo a importância dos visitantes se sentirem seguros nos shows.",
+      "Essa carta é verdadeira, pois trata do requisito não funcional de escalabilidade e confiabilidade, ao destacar a importância de o sistema ser capaz de lidar com o aumento da demanda durante eventos de grande porte.",
     ],
   },
   {
@@ -36,12 +36,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["44", "14"],
     respostasCorretasNaoFuncionais: ["42", "15"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta descreve mais um requisito funcional do parque, a necessidade de avisar os visitantes para evitar insatisfação",
-      "Essa carta conflita com a carta 31 que fala que o parque não tem filas, porém os documentos do parque sempre falam a verdade",
+      "Essa carta descreve mais um requisito funcional do parque, a necessidade de avisar os visitantes para evitar insatisfação.",
+      "Essa carta conflita com a carta 31 que fala que o parque não tem filas, porém os documentos do parque sempre falam a verdade.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade e usabilidade, ajudando a melhorar a experiência do parque para deficientes e idosos",
-      "Essa carta é verdadeira pois fala do requisito não funcional da acessibilidade facilitando para pessoas com problema de visão entenderem melhor o tamanho das filas",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da acessibilidade e usabilidade, ajudando a melhorar a experiência do parque para pessoas com alguma deficência e idosos.",
+      "Essa carta é verdadeira, pois fala do requisito não funcional de usabilidade, a intenção é garantir que os visitantes recebam informações importantes de forma clara, rápida e acessível, melhorando a experiência no parque e facilitando a tomada de decisão dos usuários.",
     ],
   },
   {
@@ -51,12 +51,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["19", "29"],
     respostasCorretasNaoFuncionais: ["32", "28"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta conflita com a 41 porém ela faz mais sentido devido a necessidade de ter várias opções de comida ao redor do parque e não apenas sorvetes",
-      "Mais um requisito funcional que traz uma necessidade do parque, que é o aumento de bancos para os visitantes",
+      "Essa carta conflita com a 41, porém ela faz mais sentido devido a necessidade de ter várias opções de comida ao redor do parque e não apenas sorvetes.",
+      "Requisito funcional que traz uma necessidade do parque, que é o aumento de bancos para os visitantes.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta é verdadeira pois fala do requisito não funcional da usabilidade aumentar a quantidade de áreas de descanso melhora a experiência do visitante no parque ",
-      "Essa carta é verdadeira pois fala do requisito não funcional da eficiência porque reduz o tempo de espera e otimiza o processo.",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da usabilidade, de forma a aumentar a quantidade de áreas de descanso melhora a experiência do visitante no parque ",
+      "Essa carta é verdadeira, pois fala do requisito não funcional da eficiência porque reduz o tempo de espera e otimiza o processo.",
     ],
   },
   {
@@ -66,12 +66,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["37", "23"],
     respostasCorretasNaoFuncionais: ["43", "24"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta conflita com a carta 10, mostrando que existem vários problemas nas lojas que deveriam ser melhorados",
-      "Essa carta mostra a necessidade de colocar as lojas mais perto das atrações, gerando mais engajamento por parte dos visitantes",
+      "Essa carta conflita com a carta 10, mostrando que existem vários problemas nas lojas que deveriam ser melhorados.",
+      "Essa carta mostra a necessidade de colocar as lojas mais perto das atrações, gerando mais engajamento por parte dos visitantes.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta é verdadeira pois evidencia a necessidade de melhorar a usabilidade e a navegação dentro da loja.",
-      "Essa carta fala na necessidade de melhorar a experiência do usuário ao entrar em uma loja",
+      "Essa carta é verdadeira, pois evidencia a necessidade de melhorar a navegação fora da loja.",
+      "Essa carta é verdadeira, pois fala na necessidade de melhorar a experiência do usuário ao entrar em uma loja",
     ],
   },
   {
@@ -81,12 +81,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["26", "16"],
     respostasCorretasNaoFuncionais: ["33", "1"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta conflita com a 35, mostrando que é muito demorado deixar um feedback para o parque",
-      "Essa carta junto com a 26 mostra que o sistema de feedback precisa de melhorias e não é bom como o funcionário falou",
+      "Essa carta conflita com a 35, mostrando que é muito demorado deixar um feedback para o parque;",
+      "Essa carta junto com a 26 mostra que o sistema de feedback precisa de melhorias e não é bom como a funcionária falou na carta 35.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta evidencia na melhora do requisito nao funcional de desempenho pois estabelece um limite de tempo para uma funcionalidade específica.",
-      "Essa carta destaca a necessidade de aprimorar a manutenibilidade e acessibilidade, evidenciando a importância de um aplicativo fácil de atualizar e compatível com múltiplos idiomas para melhorar a experiência dos visitantes.",
+      "Essa carta é verdadeira, pois evidencia na melhora do requisito nao funcional de desempenho pois estabelece um limite de tempo para uma funcionalidade específica.",
+      "Essa carta é verdadeira, pois destaca a necessidade de aprimorar a manutenibilidade e acessibilidade, evidenciando a importância de ser um parque internacional compatível com múltiplos idiomas para melhorar a experiência dos visitantes.",
     ],
   },
   {
@@ -96,12 +96,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["22", "30"],
     respostasCorretasNaoFuncionais: ["45", "48"],
     respostasCorretasFuncionaisExplicacao: [
-      "Essa carta complementa a carta 30, mostrando que os visitantes precisam ser avisados quando um brinquedo estiver em manutenção",
-      "A engenheira chefe é quem fala nessa carta, dessa forma ele é verdadeira e mostra que a carta 17 estava errada",
+      "Essa carta complementa a carta 30, mostrando que os visitantes precisam ser avisados quando um brinquedo estiver em manutenção para não ter filas como a que foi vista na carta.",
+      "A engenheira chefe é quem fala nessa carta, dessa forma, por sempre falar a verdade essa carta é verdadeira, dessa forma invalidando a carta 17.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      " Essa carta evidencia a necessidade de um requisito não funcional de confiabilidade e manutenibilidade. sugerindo implementação de alertas automáticos para informar sobre a necessidade de manutenção dos brinquedos",
-      "Essa carta destaca a necessidade de aprimorar a confiabilidade e manutenibilidade, garantindo que os dados de manutenção sejam sempre atualizados e não se percam ao longo do tempo.",
+      "Essa carta é verdadeira, pois evidencia a necessidade de um requisito não funcional de confiabilidade e manutenibilidade. sugerindo implementação de alertas para informar sobre a necessidade de manutenção dos brinquedos",
+      "Essa carta é verdadeira, pois destaca a necessidade de aprimorar a confiabilidade e manutenibilidade, garantindo que os dados de manutenção sejam sempre atualizados e não se percam ao longo do tempo.",
     ],
   },
   {
@@ -111,12 +111,12 @@ const perguntasDict = [
     respostasCorretasFuncionais: ["40", "25"],
     respostasCorretasNaoFuncionais: ["46", "47"],
     respostasCorretasFuncionaisExplicacao: [
-      "Como os documentos são sempre verdadeiros, essa carta ajuda a entender que os horários precisam ser ajustados",
-      "Essa carta complementa a carta 40 mostrando que existe problema nas distribuições de turnos",
+      "Como os documentos são sempre verdadeiros, essa carta ajuda a entender que os horários precisam ser ajustados.",
+      "Essa carta complementa a carta 40, mostrando que existem problemas nas distribuições de turnos.",
     ],
     respostasCorretasNaoFuncionaisExplicacao: [
-      "Essa carta evidencia a necessidade de monitoramento em tempo real e eficiência operacional, permitindo ajustes rápidos com base no desempenho das equipes.",
-      "Essa carta destaca a necessidade de personalização e flexibilidade, permitindo que o sistema seja adaptado às necessidades específicas de cada equipe.",
+      "Essa carta é verdadeira, pois evidencia a necessidade de monitoramento em tempo real e eficiência operacional, permitindo ajustes rápidos com base no desempenho das equipes.",
+      "Essa carta é verdadeira pois trata do requisito não funcional de confiabilidade e tempo de resposta, garantindo que as informações cheguem a tempo para evitar desalinhamentos e falhas na operação, assegurando que todos os funcionários estejam cientes de suas responsabilidades antes do início dos turnos.",
     ],
   },
 ];
@@ -150,3 +150,18 @@ export const resultadoFinal = {
       "Você é um novato em criação de diversões. Sua jornada está apenas começando, e sua curiosidade sobre como projetar experiências é um bom primeiro passo. Continue explorando e aprendendo para se tornar um criador de parques eficaz!",
   },
 };
+
+export const tecnicas = [
+  { value: 10, label: "Técnicas de Grupo Nominal" },
+  { value: 11, label: "Dinâmica de Grupo" },
+  { value: 4, label: "Análise de Documentos" },
+  { value: 1, label: "Questionário" },
+  { value: 5, label: "Workshop de Requisitos" },
+  { value: 6, label: "Brainstorming" },
+  { value: 7, label: "Prototipação" },
+  { value: 8, label: "Storytelling" },
+  { value: 2, label: "Entrevista" },
+  { value: 9, label: "Análise de Stakeholders" },
+  { value: 3, label: "Observação" },
+  { value: 12, label: "Modelagem de Casos de Uso" },
+];

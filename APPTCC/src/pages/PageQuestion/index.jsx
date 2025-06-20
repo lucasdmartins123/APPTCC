@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import perguntasDict, { resultadoFinal } from "../../utils";
+import perguntasDict, { resultadoFinal, tecnicas } from "../../utils";
 import nomeJogo from "../../assets/nomeJogo.png";
 
 export default function PageQuestion() {
@@ -10,6 +10,8 @@ export default function PageQuestion() {
   const [respostasNaoFuncionais, setRespostasNaoFuncionais] = useState({});
   const [score, setScore] = useState(0);
   const [mostrarTextoFinal, setMostrarTextoFinal] = useState(false);
+  const [tecnicasSelecionadas, setTecnicasSelecionadas] = useState([]);
+  const tecnicasCertas = [0, 1, 2, 3];
 
   function verificarRespostasFuncionais() {
     let novaPontuacao = 0;
@@ -40,6 +42,21 @@ export default function PageQuestion() {
     });
 
     return novaPontuacao;
+  }
+
+  function verificarRespostasTecnicas() {
+    let pontos = 0;
+
+    tecnicasSelecionadas.forEach((tecnica) => {
+      console.log(tecnica);
+      if (tecnicasCertas.includes(tecnica)) {
+        pontos += 2; // Acertou uma técnica válida
+      } else {
+        pontos -= 1; // Marcou uma técnica errada
+      }
+    });
+
+    return pontos;
   }
 
   function verificarRespostasNaoFuncionais() {
@@ -84,7 +101,9 @@ export default function PageQuestion() {
     );
     const pontuacaoFuncionais = verificarRespostasFuncionais();
     const pontuacaoNaoFuncionais = verificarRespostasNaoFuncionais();
-    const novaPontuacao = pontuacaoFuncionais + pontuacaoNaoFuncionais;
+    const pontuacaoTecnicas = verificarRespostasTecnicas();
+    const novaPontuacao =
+      pontuacaoFuncionais + pontuacaoNaoFuncionais + pontuacaoTecnicas;
     setScore(novaPontuacao);
     setMostrarTextoFinal(true);
   }
@@ -121,6 +140,16 @@ export default function PageQuestion() {
     const naoFuncional = respostasNaoFuncionais[index];
     return funcional?.trim() && naoFuncional?.trim();
   });
+
+  function handleCheckboxChange(tecnica) {
+    if (tecnicasSelecionadas.includes(tecnica)) {
+      setTecnicasSelecionadas(
+        tecnicasSelecionadas.filter((t) => t !== tecnica)
+      );
+    } else {
+      setTecnicasSelecionadas([...tecnicasSelecionadas, tecnica]);
+    }
+  }
 
   function limparRespostas() {
     localStorage.removeItem("respostasFuncionais");
@@ -172,17 +201,40 @@ export default function PageQuestion() {
                     <StyledRequisitosDiv>
                       <StyledGabaritoText>
                         As cartas corretas eram:{" "}
-                        {questao.respostasCorretasFuncionais.join(", ")}
+                        {questao?.respostasCorretasFuncionais.join(", ")}
                       </StyledGabaritoText>
 
                       <StyledGabaritoText>
                         As cartas corretas eram:{" "}
-                        {questao.respostasCorretasNaoFuncionais.join(", ")}
+                        {questao?.respostasCorretasNaoFuncionais.join(", ")}
                       </StyledGabaritoText>
                     </StyledRequisitosDiv>
                   )}
                 </StyledQuestionsDiv>
               ))}
+              <StyledH2>
+                9. Quais Técnicas de levantamento de Requisitos foram utilizadas
+                no jogo?{" "}
+              </StyledH2>
+              <CheckboxContainer>
+                {tecnicas.map((tecnica) => (
+                  <StyledCheckboxLabel key={tecnica.value}>
+                    <input
+                      type="checkbox"
+                      value={tecnica.value}
+                      checked={tecnicasSelecionadas.includes(tecnica.value)}
+                      onChange={() => handleCheckboxChange(tecnica.value)}
+                    />
+                    <StyledTecnicasLabel>{tecnica.label}</StyledTecnicasLabel>
+                  </StyledCheckboxLabel>
+                ))}
+              </CheckboxContainer>
+              {gabarito && (
+                <StyledGabaritoText>
+                  As respostas corretas eram: Análise de Documentos, Entrevista,
+                  Questionário e Observação
+                </StyledGabaritoText>
+              )}
             </>
           ) : (
             <StyledFinalAnswersDiv>
@@ -238,12 +290,53 @@ const Container = styled.div`
   }
 `;
 
+const StyledTecnicasLabel = styled.h3`
+  font-size: 16px;
+`;
 const StyledImg = styled.img`
   margin-top: 16px;
   width: 100%;
   max-width: 500px;
   @media (max-width: 800px) {
     width: 100%;
+  }
+`;
+
+const CheckboxContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const StyledCheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 2px solid #b0b1b3;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f6f7f9;
+  transition: all 0.2s;
+
+  input {
+    accent-color: #4178f8;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: #e1e3e5;
   }
 `;
 
