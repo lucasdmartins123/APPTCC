@@ -152,16 +152,12 @@ export const resultadoFinal = {
 };
 
 export const tecnicas = [
-  { value: 10, label: "Técnicas de Grupo Nominal" },
   { value: 11, label: "Dinâmica de Grupo" },
   { value: 4, label: "Análise de Documentos" },
   { value: 1, label: "Questionário" },
-  { value: 5, label: "Workshop de Requisitos" },
   { value: 6, label: "Brainstorming" },
   { value: 7, label: "Prototipação" },
   { value: 8, label: "Storytelling" },
   { value: 2, label: "Entrevista" },
-  { value: 9, label: "Análise de Stakeholders" },
   { value: 3, label: "Observação" },
-  { value: 12, label: "Modelagem de Casos de Uso" },
 ];

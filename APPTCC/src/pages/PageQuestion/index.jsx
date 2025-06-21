@@ -48,9 +48,8 @@ export default function PageQuestion() {
     let pontos = 0;
 
     tecnicasSelecionadas.forEach((tecnica) => {
-      console.log(tecnica);
       if (tecnicasCertas.includes(tecnica)) {
-        pontos += 2; // Acertou uma técnica válida
+        pontos += 1; // Acertou uma técnica válida
       } else {
         pontos -= 1; // Marcou uma técnica errada
       }
@@ -80,7 +79,7 @@ export default function PageQuestion() {
       });
 
       if (acertos === corretas.length && erros === 0) {
-        novaPontuacao += 5;
+        novaPontuacao += 4;
       } else {
         novaPontuacao += acertos * 2;
         novaPontuacao -= erros * 1;
@@ -109,13 +108,13 @@ export default function PageQuestion() {
   }
 
   const texto =
-    score >= 18
+    score >= 60
       ? "arquiteto"
-      : score < 18 && score > 14
+      : score < 60 && score >= 40
       ? "designer"
-      : score > 10 && score <= 14
+      : score >= 20 && score < 40
       ? "criador"
-      : score > 6 && score <= 10
+      : score >= 10 && score < 20
       ? "explorador"
       : "novato";
 
@@ -163,6 +162,10 @@ export default function PageQuestion() {
       <Container>
         <StyledImg src={nomeJogo} />
         <WrapperContainer>
+          <StyledDicaText>
+            Dica: Há duas cartas corretas para cada requisito em cada umas das
+            perguntas
+          </StyledDicaText>
           {!mostrarTextoFinal ? (
             <>
               {perguntasDict.map((questao, index) => (
@@ -178,23 +181,39 @@ export default function PageQuestion() {
                     <StyledInput
                       placeholder="Digite o número das cartas separados por vírgula"
                       value={respostasFuncionais[index] || ""}
-                      onChange={(e) =>
-                        setRespostasFuncionais({
-                          ...respostasFuncionais,
-                          [index]: e.target.value,
-                        })
-                      }
+                      onChange={(e) => {
+                        const valor = e.target.value;
+                        const respostas = valor
+                          .split(",")
+                          .map((r) => r.trim())
+                          .filter((r) => r !== "");
+
+                        if (respostas.length <= 2) {
+                          setRespostasFuncionais({
+                            ...respostasFuncionais,
+                            [index]: valor,
+                          });
+                        }
+                      }}
                     />
 
                     <StyledInput
                       placeholder="Digite o número das cartas separados por vírgula"
                       value={respostasNaoFuncionais[index] || ""}
-                      onChange={(e) =>
-                        setRespostasNaoFuncionais({
-                          ...respostasNaoFuncionais,
-                          [index]: e.target.value,
-                        })
-                      }
+                      onChange={(e) => {
+                        const valor = e.target.value;
+                        const respostas = valor
+                          .split(",")
+                          .map((r) => r.trim())
+                          .filter((r) => r !== "");
+
+                        if (respostas.length <= 2) {
+                          setRespostasNaoFuncionais({
+                            ...respostasNaoFuncionais,
+                            [index]: valor,
+                          });
+                        }
+                      }}
                     />
                   </StyledRequisitosDiv>
                   {gabarito && (
@@ -255,7 +274,7 @@ export default function PageQuestion() {
             {mostrarTextoFinal && (
               <StyledButton
                 onClick={() => {
-                  setGabarito(true);
+                  //setGabarito(true);
                   setMostrarTextoFinal(false);
                 }}
               >
@@ -419,6 +438,10 @@ const StyledInput = styled.input`
 
 const StyledGabaritoText = styled.p`
   width: 50%;
+  color: red;
+  font-weight: bold;
+`;
+const StyledDicaText = styled.p`
   color: red;
   font-weight: bold;
 `;
