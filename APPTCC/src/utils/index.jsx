@@ -161,3 +161,14 @@ export const tecnicas = [
   { value: 2, label: "Entrevista" },
   { value: 3, label: "Observação" },
 ];
+
+export const cartasirrelevantes = [
+  { value: 5, label: "Carta 5" },
+  { value: 3, label: "Carta 3" },
+  { value: 9, label: "Carta 9" },
+  { value: 7, label: "Carta 7" },
+  { value: 4, label: "Carta 4" },
+  { value: 8, label: "Carta 8" },
+  { value: 2, label: "Carta 2" },
+  { value: 6, label: "Carta 6" },
+];

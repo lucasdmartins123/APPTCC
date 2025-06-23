@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import perguntasDict, { resultadoFinal, tecnicas } from "../../utils";
+import perguntasDict, {
+  cartasirrelevantes,
+  resultadoFinal,
+  tecnicas,
+} from "../../utils";
 import nomeJogo from "../../assets/nomeJogo.png";
 
 export default function PageQuestion() {
   const [gabarito, setGabarito] = useState(false);
+  const [Explicagabarito, setExplicaGabarito] = useState(false);
   const [respostasFuncionais, setRespostasFuncionais] = useState({});
   const [respostasNaoFuncionais, setRespostasNaoFuncionais] = useState({});
   const [score, setScore] = useState(0);
   const [mostrarTextoFinal, setMostrarTextoFinal] = useState(false);
   const [tecnicasSelecionadas, setTecnicasSelecionadas] = useState([]);
-  const tecnicasCertas = [0, 1, 2, 3];
+  const [cartasIrrelevantesSelecionadas, setcartasIrrelevantesSelecionadas] =
+    useState([]);
+  const tecnicasCertas = [1, 2, 3, 4];
+  const cartasirrelevantesArray = [5, 3, 9, 7, 4, 8, 2, 6];
 
   function verificarRespostasFuncionais() {
     let novaPontuacao = 0;
@@ -22,23 +30,11 @@ export default function PageQuestion() {
         .map((r) => r.trim());
       const corretas = questao.respostasCorretasFuncionais;
 
-      let acertos = 0;
-      let erros = 0;
-
       respostaUsuario.forEach((resposta) => {
         if (corretas.includes(resposta)) {
-          acertos += 1;
-        } else {
-          erros += 1;
+          novaPontuacao += 1;
         }
       });
-
-      if (acertos === corretas.length && erros === 0) {
-        novaPontuacao += 5;
-      } else {
-        novaPontuacao += acertos * 2;
-        novaPontuacao -= erros * 1;
-      }
     });
 
     return novaPontuacao;
@@ -49,9 +45,21 @@ export default function PageQuestion() {
 
     tecnicasSelecionadas.forEach((tecnica) => {
       if (tecnicasCertas.includes(tecnica)) {
-        pontos += 1; // Acertou uma técnica válida
+        pontos += 1;
       } else {
-        pontos -= 1; // Marcou uma técnica errada
+        pontos -= 1;
+      }
+    });
+
+    return pontos;
+  }
+
+  function verificarRespostasCartasIrrelevantes() {
+    let pontos = 0;
+
+    cartasIrrelevantesSelecionadas.forEach((cartas) => {
+      if (cartasirrelevantesArray.includes(cartas)) {
+        pontos -= 1;
       }
     });
 
@@ -67,23 +75,11 @@ export default function PageQuestion() {
         .map((r) => r.trim());
       const corretas = questao.respostasCorretasNaoFuncionais;
 
-      let acertos = 0;
-      let erros = 0;
-
       respostaUsuario.forEach((resposta) => {
         if (corretas.includes(resposta)) {
-          acertos += 1;
-        } else {
-          erros += 1;
+          novaPontuacao += 1;
         }
       });
-
-      if (acertos === corretas.length && erros === 0) {
-        novaPontuacao += 4;
-      } else {
-        novaPontuacao += acertos * 2;
-        novaPontuacao -= erros * 1;
-      }
     });
 
     return novaPontuacao;
@@ -101,20 +97,28 @@ export default function PageQuestion() {
     const pontuacaoFuncionais = verificarRespostasFuncionais();
     const pontuacaoNaoFuncionais = verificarRespostasNaoFuncionais();
     const pontuacaoTecnicas = verificarRespostasTecnicas();
+    const pontuacaoCartasIrrelevantes = verificarRespostasCartasIrrelevantes();
     const novaPontuacao =
-      pontuacaoFuncionais + pontuacaoNaoFuncionais + pontuacaoTecnicas;
+      pontuacaoFuncionais +
+      pontuacaoNaoFuncionais +
+      pontuacaoTecnicas +
+      pontuacaoCartasIrrelevantes;
+    console.log(pontuacaoFuncionais);
+    console.log(pontuacaoNaoFuncionais);
+    console.log(pontuacaoTecnicas);
+    console.log(pontuacaoCartasIrrelevantes);
     setScore(novaPontuacao);
     setMostrarTextoFinal(true);
   }
 
   const texto =
-    score >= 60
+    score >= 31
       ? "arquiteto"
-      : score < 60 && score >= 40
+      : score >= 24 && score <= 30
       ? "designer"
-      : score >= 20 && score < 40
+      : score >= 16 && score <= 23
       ? "criador"
-      : score >= 10 && score < 20
+      : score >= 8 && score <= 15
       ? "explorador"
       : "novato";
 
@@ -150,6 +154,19 @@ export default function PageQuestion() {
     }
   }
 
+  function handleCheckboxCartasChange(cartas) {
+    if (cartasIrrelevantesSelecionadas.includes(cartas)) {
+      setcartasIrrelevantesSelecionadas(
+        cartasIrrelevantesSelecionadas.filter((t) => t !== cartas)
+      );
+    } else {
+      setcartasIrrelevantesSelecionadas([
+        ...cartasIrrelevantesSelecionadas,
+        cartas,
+      ]);
+    }
+  }
+
   function limparRespostas() {
     localStorage.removeItem("respostasFuncionais");
     localStorage.removeItem("respostasNaoFuncionais");
@@ -163,8 +180,8 @@ export default function PageQuestion() {
         <StyledImg src={nomeJogo} />
         <WrapperContainer>
           <StyledDicaText>
-            Dica: Há duas cartas corretas para cada requisito em cada umas das
-            perguntas
+            Dica: Há duas cartas corretas para cada requisito em cada umas das 8
+            primeiras perguntas
           </StyledDicaText>
           {!mostrarTextoFinal ? (
             <>
@@ -249,10 +266,34 @@ export default function PageQuestion() {
                 ))}
               </CheckboxContainer>
               {gabarito && (
-                <StyledGabaritoText>
+                <StyledDicaText>
                   As respostas corretas eram: Análise de Documentos, Entrevista,
                   Questionário e Observação
-                </StyledGabaritoText>
+                </StyledDicaText>
+              )}
+              <StyledH2>
+                Selecione quais dessas cartas foram reveladas na mesa
+              </StyledH2>
+              <CheckboxContainer>
+                {cartasirrelevantes.map((carta) => (
+                  <StyledCheckboxLabel key={carta.value}>
+                    <input
+                      type="checkbox"
+                      value={carta.value}
+                      checked={cartasIrrelevantesSelecionadas.includes(
+                        carta.value
+                      )}
+                      onChange={() => handleCheckboxCartasChange(carta.value)}
+                    />
+                    <StyledTecnicasLabel>{carta.label}</StyledTecnicasLabel>
+                  </StyledCheckboxLabel>
+                ))}
+              </CheckboxContainer>
+              {gabarito && (
+                <StyledDicaText>
+                  Para cada carta selecionada foi descontado 1 ponto, pois elas
+                  eram irrelevantes
+                </StyledDicaText>
               )}
             </>
           ) : (
@@ -274,14 +315,14 @@ export default function PageQuestion() {
             {mostrarTextoFinal && (
               <StyledButton
                 onClick={() => {
-                  //setGabarito(true);
+                  setGabarito(true);
                   setMostrarTextoFinal(false);
                 }}
               >
                 Ver gabarito
               </StyledButton>
             )}
-            {gabarito && (
+            {Explicagabarito && (
               <Link to="/infos">
                 <StyledButton>Explicações do gabarito</StyledButton>
               </Link>
