@@ -243,7 +243,7 @@ export default function PageQuestion() {
             )}
 
             <StyledH2>
-              Selecione as cartas irrelevantes reveladas na mesa:
+              Selecione quais dessas cartas estão reveladas na mesa:
             </StyledH2>
             <CheckboxContainer>
               {cartasirrelevantes.map((carta) => (
