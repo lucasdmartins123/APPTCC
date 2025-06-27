@@ -10,7 +10,6 @@ import nomeJogo from "../../assets/nomeJogo.png";
 
 export default function PageQuestion() {
   const [gabarito, setGabarito] = useState(false);
-  const [Explicagabarito, setExplicaGabarito] = useState(false);
   const [respostasFuncionais, setRespostasFuncionais] = useState({});
   const [respostasNaoFuncionais, setRespostasNaoFuncionais] = useState({});
   const [score, setScore] = useState(0);
@@ -296,7 +295,7 @@ export default function PageQuestion() {
             </StyledButton>
           )}
 
-          {Explicagabarito && (
+          {gabarito && (
             <Link to="/infos">
               <StyledButton>Explicações do gabarito</StyledButton>
             </Link>
